@@ -63,6 +63,15 @@ module.exports = function(options) {
 					path: rename(file.path, local),
 					contents: new Buffer(rendered)
 				}));
+
+				if (options.defaultLocale == local){
+					stream.push(new File({
+						cwd: file.cwd,
+						base: file.base,
+						path: file.path,
+						contents: new Buffer(rendered)
+					}));
+				}
 			}
 			
 			callback();      
