@@ -18,7 +18,7 @@ function render(template, locale, translations, data){
 	  return polyglot.t.call(polyglot, input);
 	});
 	data.locale = locale;
-	return swig.render(template, { locals: data } );
+	return swig.render(String(template.contents), { filename: template.path, locals: data } );
 
 }
 
@@ -55,7 +55,7 @@ module.exports = function(options) {
 		try {
 			
 			for (var local in translations){
-				var rendered = render(String(file.contents), local, translations, data);
+				var rendered = render(file, local, translations, data);
 				
 				stream.push(new File({
 					cwd: file.cwd,
