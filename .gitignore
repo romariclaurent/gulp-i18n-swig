@@ -1,1 +1,7 @@
-node_modules
+# folders
+node_modules/
+test/output/
+
+# idea
+.idea/
+gulp-i18n-swig.iml
